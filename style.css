@@ -1,11 +1,14 @@
-#carouselExampleCaptions    div.content{
-    width:150px;
-    height:100px;
+#carouselExampleCaptions {
+    background-color: darkgray;
+}
+
+#carouselExampleCaptions div.content{
     min-width:150px;
-    min-height:100px;
-    max-width:200px;
-    max-height:100px;
+    min-height:300px;
     overflow:hidden;
     display:block;
-    border:1px solid red;
+}
+
+.carousel-caption{
+    color: white;
 }
