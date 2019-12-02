@@ -1,3 +1,7 @@
+body {
+  background-image: url("../images/blue-floral-watercolor-background.jpg");
+  background-repeat: repeat; }
+
 #carouselExampleCaptions {
   background-color: darkgray; }
   #carouselExampleCaptions div.content {
@@ -7,3 +11,9 @@
     display: block; }
   #carouselExampleCaptions .carousel-caption {
     color: white; }
+
+.jumbotron {
+  background-color: rgba(233, 236, 239, 0.75); }
+
+.bg-primary {
+  background-color: #637cd8 !important; }
