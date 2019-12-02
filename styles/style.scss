@@ -23,3 +23,7 @@ body {
 .bg-primary {
   background-color: #637cd8 !important;
 }
+
+h1:not(:first-of-type) {
+  padding-top: 54px;
+}
