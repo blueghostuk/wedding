@@ -34,19 +34,15 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Locations
+                        Travel & Locations
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#pick-up">Pick up</a>
                         <a class="dropdown-item" href="#wedding">Wedding</a>
                         <a class="dropdown-item" href="#reception">Reception</a>
+                        <a class="dropdown-item" href="#accomodation">Accomodation</a>
+                        <a class="dropdown-item" href="#transport">Transport</a>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#accomodation">Accomodation</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#transport">Transport</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#gift-list">Gift List</a>
@@ -160,28 +156,43 @@
             </p>
             <h1 id="rsvp">RSVP</h1>
             <p>
-                <form>
+                <form class="gform" method="POST" action="https://script.google.com/macros/s/AKfycbyt_ahHUeONsp5Luu74wZNCWPQxfmb8u8Diu7svxLt10VZvieE-/exec">
                     <div class="form-group">
                         <label for="name">Name(s):</label>
-                        <input type="text" class="form-control" id="name" required placeholder="Please specify if plus one">
+                        <input type="text" class="form-control" id="name" name="name" required placeholder="Please specify if plus one">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@domain.com">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@domain.com">
                     </div>
                     <div class="form-group">
                         <label for="mobile">Contact Number:</label>
-                        <input type="tel" class="form-control" id="mobile">
+                        <input type="tel" class="form-control" id="mobile" name="phone">
                     </div>
                     <div class="form-group">
                         <label for="dietary">Dietary Requirements:</label>
-                        <textarea class="form-control" id="dietary" placeholder="Enter any dietary requirements please"></textarea>
+                        <textarea class="form-control" id="dietary" name="dietary" placeholder="Enter any dietary requirements please"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="song">Favourite Song:</label>
-                        <input type="text" class="form-control" id="song" placeholder="We will do our best to get it on the playlist.">
+                        <input type="text" class="form-control" id="song" name="song" placeholder="We will do our best to get it on the playlist.">
+                    </div>
+                    <div class="form-group">
+                        <label for="attend">Attendence:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="attend" id="yes" value="yes" checked>
+                            <label class="form-check-label" for="yes">Yes</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="attend" id="no" value="no">
+                            <label class="form-check-label" for="no">Unfortunately I can't attend</label>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <div style="display:none" class="alert alert-success" role="alert">
+                        <h2><em>Thanks</em> for your RSVP.
+                        </h2>
+                    </div>
                 </form>
             </p>
         </div>
@@ -189,6 +200,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script data-cfasync="false" type="text/javascript" src="js/form-submission-handler.js"></script>
 </body>
 
 </html>
