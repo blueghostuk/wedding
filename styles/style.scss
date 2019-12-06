@@ -27,3 +27,11 @@ body {
 h1:not(:first-of-type) {
   padding-top: 54px;
 }
+
+nav {
+  @media (min-width: 768px) {
+    span.date {
+      display: inline !important;
+    }
+  }
+}
