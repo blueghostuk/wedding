@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "node-sass styles/style.scss styles/style.css",
-    "build": "npm run build:css"
+    "build:scss": "node-sass styles/style.scss styles/style.css",
+    "build:ts": "tsc",
+    "build": "npm run build:scss & npm run build:ts",
+    "watch:scss": "node-sass --watch styles/style.scss styles/style.css",
+    "watch:ts": "tsc --watch --incremental",
+    "watch": "concurrently npm:watch:*"
   },
   "repository": {
     "type": "git",
@@ -19,7 +23,9 @@
   },
   "homepage": "https://github.com/blueghostuk/wedding#readme",
   "devDependencies": {
-    "node-sass": "^4.13.0"
+    "concurrently": "^5.0.1",
+    "node-sass": "^4.13.0",
+    "typescript": "^3.7.3"
   },
   "private": true
 }
