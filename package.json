@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:scss": "node-sass styles/style.scss styles/style.css",
+    "build:scss": "node-sass --source-map true styles/style.scss styles/style.css",
     "build:ts": "tsc",
     "build": "npm run build:scss & npm run build:ts",
-    "watch:scss": "node-sass --watch styles/style.scss styles/style.css",
+    "watch:scss": "node-sass --watch --source-map true styles/style.scss styles/style.css",
     "watch:ts": "tsc --watch --incremental",
     "watch": "concurrently npm:watch:*"
   },
