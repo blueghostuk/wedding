@@ -40,9 +40,13 @@ nav {
 }
 
 div.transport {
-  display: flex;
-
-  img{
+  @media (max-width: 990px) {
+    flex-wrap: wrap;
+  }
+  img {
     margin-right: 1rem;
+    @media (max-width: 990px) {
+      order: 2;
+    }
   }
 }

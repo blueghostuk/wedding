@@ -27,9 +27,14 @@ h1:not(:first-of-type) {
   nav span.date {
     display: inline !important; } }
 
-div.transport {
-  display: flex; }
-  div.transport img {
-    margin-right: 1rem; }
+@media (max-width: 990px) {
+  div.transport {
+    flex-wrap: wrap; } }
+
+div.transport img {
+  margin-right: 1rem; }
+  @media (max-width: 990px) {
+    div.transport img {
+      order: 2; } }
 
 /*# sourceMappingURL=style.css.map */
