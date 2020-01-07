@@ -27,8 +27,15 @@ body {
   background-color: #637cd8 !important;
 }
 
-h1:not(:first-of-type) {
-  padding-top: 54px;
+h1 {
+  &:not(:first-of-type) {
+    padding-top: 5rem;
+  }
+  @media (max-width: 575px) {
+    &:first-of-type {
+      padding-top: 2rem;
+    }
+  }
 }
 
 nav {
