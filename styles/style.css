@@ -1,7 +1,8 @@
 body {
   background-image: url("../images/blue-floral-watercolor-background.jpg");
   background-repeat: repeat;
-  position: relative; }
+  position: relative;
+  line-height: 2rem; }
 
 #carouselExampleCaptions {
   background-color: darkgray; }
@@ -25,5 +26,10 @@ h1:not(:first-of-type) {
 @media (min-width: 768px) {
   nav span.date {
     display: inline !important; } }
+
+div.transport {
+  display: flex; }
+  div.transport img {
+    margin-right: 1rem; }
 
 /*# sourceMappingURL=style.css.map */
