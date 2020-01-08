@@ -5,8 +5,9 @@ body {
   line-height: 2rem;
 }
 
-#carouselExampleCaptions {
+#carousel {
   background-color: darkgray;
+  margin-top: 5.5rem;
 
   div.content {
     min-width: 150px;
@@ -28,13 +29,14 @@ body {
 }
 
 h1 {
-  &:not(:first-of-type) {
-    padding-top: 5rem;
-  }
   @media (max-width: 575px) {
     &:first-of-type {
       padding-top: 2rem;
     }
+  }
+
+  &:not(:first-of-type) {
+    margin-top: 3rem;
   }
 }
 
@@ -77,4 +79,12 @@ table.order-of-play {
       padding-left: 1rem;
     }
   }
+}
+
+*[id]:before {
+  display: block;
+  content: " ";
+  margin-top: -75px;
+  height: 75px;
+  visibility: hidden;
 }

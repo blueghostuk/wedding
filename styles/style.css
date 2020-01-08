@@ -4,14 +4,15 @@ body {
   position: relative;
   line-height: 2rem; }
 
-#carouselExampleCaptions {
-  background-color: darkgray; }
-  #carouselExampleCaptions div.content {
+#carousel {
+  background-color: darkgray;
+  margin-top: 5.5rem; }
+  #carousel div.content {
     min-width: 150px;
     min-height: 300px;
     overflow: hidden;
     display: block; }
-  #carouselExampleCaptions .carousel-caption {
+  #carousel .carousel-caption {
     color: white; }
 
 .jumbotron {
@@ -20,12 +21,12 @@ body {
 .bg-primary {
   background-color: #637cd8 !important; }
 
-h1:not(:first-of-type) {
-  padding-top: 5rem; }
-
 @media (max-width: 575px) {
   h1:first-of-type {
     padding-top: 2rem; } }
+
+h1:not(:first-of-type) {
+  margin-top: 3rem; }
 
 @media (min-width: 768px) {
   nav span.date {
@@ -57,5 +58,12 @@ table.order-of-play td {
   @media (max-width: 768px) {
     table.order-of-play td {
       padding-left: 1rem; } }
+
+*[id]:before {
+  display: block;
+  content: " ";
+  margin-top: -75px;
+  height: 75px;
+  visibility: hidden; }
 
 /*# sourceMappingURL=style.css.map */
