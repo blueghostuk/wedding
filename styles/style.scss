@@ -61,6 +61,20 @@ div.transport {
   }
 }
 
-h1, p.lead {
+h1,
+p.lead {
   text-align: center;
+}
+
+table.order-of-play {
+  th {
+    border-right: solid 1px black;
+    text-align: center;
+  }
+  td {
+    padding-left: 2.5rem;
+    @media (max-width: 768px) {
+      padding-left: 1rem;
+    }
+  }
 }
