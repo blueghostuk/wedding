@@ -74,6 +74,21 @@ div.transport {
   }
 }
 
+div.location {
+  @media (max-width: 990px) {
+    flex-wrap: wrap;
+  }
+  p {
+    text-align: left;
+  }
+  p.map {
+    margin-right: 1rem;
+    @media (max-width: 990px) {
+      order: 2;
+    }
+  }
+}
+
 h1,
 p.lead {
   text-align: center;
