@@ -7,11 +7,10 @@ body {
 
 #carousel {
   background-color: darkgray;
-  margin-top: 5.5rem;
 
   div.content {
     min-width: 150px;
-    min-height: 300px;
+    min-height: 10rem;
     overflow: hidden;
     display: block;
   }
@@ -81,7 +80,7 @@ table.order-of-play {
   }
 }
 
-*[id]:before {
+:not(#carousel)*[id]:before {
   display: block;
   content: " ";
   margin-top: -75px;
