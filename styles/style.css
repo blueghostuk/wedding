@@ -41,4 +41,7 @@ div.transport img {
     div.transport img {
       order: 2; } }
 
+h1, p.lead {
+  text-align: center; }
+
 /*# sourceMappingURL=style.css.map */
