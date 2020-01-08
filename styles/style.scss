@@ -7,15 +7,27 @@ body {
 
 #carousel {
   background-color: darkgray;
+  border-radius: 0.5rem;
+  .carousel-item {
+    img {
+      border-radius: 0.5rem;
+      min-height: 10rem;
+    }
+    .carousel-caption {
+      color: white;
+      background-color: darkgray;
+      border-radius: 0.5rem;
 
-  div.content {
-    min-width: 150px;
-    min-height: 10rem;
-    overflow: hidden;
-    display: block;
-  }
-  .carousel-caption {
-    color: white;
+      @media (max-width: 768px) {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        h5,
+        p {
+          font-size: 1rem;
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 
