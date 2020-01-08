@@ -41,6 +41,9 @@ div.transport img {
     div.transport img {
       order: 2; } }
 
+div.transport p {
+  text-align: left; }
+
 h1, p.lead {
   text-align: center; }
 
