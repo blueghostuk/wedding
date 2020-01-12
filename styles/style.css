@@ -87,4 +87,9 @@ table.order-of-play td {
   height: 75px;
   visibility: hidden; }
 
+table.table {
+  margin: 0px auto;
+  width: unset;
+  min-width: 400px; }
+
 /*# sourceMappingURL=style.css.map */
