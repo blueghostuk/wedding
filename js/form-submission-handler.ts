@@ -12,7 +12,7 @@
       }
       return true;
     }).map((k) => {
-      if ((elements[k as any as number]as HTMLFormInput).name !== undefined) {
+      if ((elements[k as any as number] as HTMLFormInput).name !== undefined) {
         return (elements[k as any as number] as any).name;
         // special case for Edge's html collection
       } else if ((elements[k as any as number] as any as RadioNodeList).length > 0) {
@@ -32,7 +32,7 @@
       // when our element has multiple items, get their values
       if ((element as RadioNodeList).length) {
         let data = [];
-        for (var i = 0; i < (element as RadioNodeList).length; i++) {
+        for (let i = 0; i < (element as RadioNodeList).length; i++) {
           let item = (element as RadioNodeList).item(i) as HTMLInputElement | HTMLOptionElement;
           if ((item as HTMLInputElement).checked || (item as HTMLOptionElement).selected) {
             data.push(item.value);
@@ -53,6 +53,11 @@
   function handleFormSubmit(event: Event) {  // handles form submit without any jquery
     event.preventDefault();           // we are submitting via xhr below
     let form = event.target as HTMLFormElement;
+    let thankYouMessage = form.querySelector<HTMLElement>(".alert");
+    if (thankYouMessage){
+      thankYouMessage.style.display = "none";
+    }
+    disableAllButtons(form);
     let formData = getFormData(form);
     let data = formData.data;
 
@@ -61,22 +66,34 @@
       return false;
     }
 
-    disableAllButtons(form);
     let url = form.action;
     let xhr = new XMLHttpRequest();
     xhr.open('POST', url);
     // xhr.withCredentials = true;
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        form.reset();
-        let formElements = form.querySelectorAll<HTMLElement>(".form-group")
-        if (formElements && formElements.length > 0) {
-          formElements.forEach((e) => e.style.display = "none");// hide form controls
-        }
-        let thankYouMessage = form.querySelector<HTMLElement>(".alert");
-        if (thankYouMessage) {
-          thankYouMessage.style.display = "block";
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          form.reset();
+          let formElements = form.querySelectorAll<HTMLElement>(".form-group")
+          if (formElements && formElements.length > 0) {
+            formElements.forEach((e) => e.style.display = "none");// hide form controls
+          }
+
+          if (thankYouMessage) {
+            thankYouMessage.classList.toggle("alert-success", true);
+            thankYouMessage.classList.toggle("alert-danger", false);
+            thankYouMessage.innerHTML = "<h2>Thanks for your RSVP.</h2>";
+            thankYouMessage.style.display = "block";
+          }
+        } else {
+          disableAllButtons(form, false);
+          if (thankYouMessage) {
+            thankYouMessage.classList.toggle("alert-success", false);
+            thankYouMessage.classList.toggle("alert-danger", true);
+            thankYouMessage.innerHTML = "<h2>Sorry there was a problem sending your RSVP, please try again.</h2>"
+            thankYouMessage.style.display = "block";
+          }
         }
       }
     };
@@ -90,16 +107,16 @@
   function loaded() {
     // bind to the submit event of our form
     let forms = document.querySelectorAll<HTMLFormElement>("form.gform");
-    for (var i = 0; i < forms.length; i++) {
+    for (let i = 0; i < forms.length; i++) {
       forms[i].addEventListener("submit", handleFormSubmit, false);
     }
   };
   document.addEventListener("DOMContentLoaded", loaded, false);
 
-  function disableAllButtons(form: HTMLFormElement) {
+  function disableAllButtons(form: HTMLFormElement, disabled = true) {
     let buttons = form.querySelectorAll<HTMLButtonElement>("button");
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].disabled = true;
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].disabled = disabled;
     }
   }
 })();

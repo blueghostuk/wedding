@@ -47,28 +47,45 @@
     function handleFormSubmit(event) {
         event.preventDefault(); // we are submitting via xhr below
         var form = event.target;
+        var thankYouMessage = form.querySelector(".alert");
+        if (thankYouMessage) {
+            thankYouMessage.style.display = "none";
+        }
+        disableAllButtons(form);
         var formData = getFormData(form);
         var data = formData.data;
         // If a honeypot field is filled, assume it was done so by a spam bot.
         if (formData.honeypot) {
             return false;
         }
-        disableAllButtons(form);
         var url = form.action;
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         // xhr.withCredentials = true;
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                form.reset();
-                var formElements = form.querySelectorAll(".form-group");
-                if (formElements && formElements.length > 0) {
-                    formElements.forEach(function (e) { return e.style.display = "none"; }); // hide form controls
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    form.reset();
+                    var formElements = form.querySelectorAll(".form-group");
+                    if (formElements && formElements.length > 0) {
+                        formElements.forEach(function (e) { return e.style.display = "none"; }); // hide form controls
+                    }
+                    if (thankYouMessage) {
+                        thankYouMessage.classList.toggle("alert-success", true);
+                        thankYouMessage.classList.toggle("alert-danger", false);
+                        thankYouMessage.innerHTML = "<h2>Thanks for your RSVP.</h2>";
+                        thankYouMessage.style.display = "block";
+                    }
                 }
-                var thankYouMessage = form.querySelector(".alert");
-                if (thankYouMessage) {
-                    thankYouMessage.style.display = "block";
+                else {
+                    disableAllButtons(form, false);
+                    if (thankYouMessage) {
+                        thankYouMessage.classList.toggle("alert-success", false);
+                        thankYouMessage.classList.toggle("alert-danger", true);
+                        thankYouMessage.innerHTML = "<h2>Sorry there was a problem sending your RSVP, please try again.</h2>";
+                        thankYouMessage.style.display = "block";
+                    }
                 }
             }
         };
@@ -87,10 +104,11 @@
     }
     ;
     document.addEventListener("DOMContentLoaded", loaded, false);
-    function disableAllButtons(form) {
+    function disableAllButtons(form, disabled) {
+        if (disabled === void 0) { disabled = true; }
         var buttons = form.querySelectorAll("button");
         for (var i = 0; i < buttons.length; i++) {
-            buttons[i].disabled = true;
+            buttons[i].disabled = disabled;
         }
     }
 })();
