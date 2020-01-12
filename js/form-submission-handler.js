@@ -51,7 +51,7 @@
         if (thankYouMessage) {
             thankYouMessage.style.display = "none";
         }
-        disableAllButtons(form);
+        disableAllButtons(form, true, "Submitting");
         var formData = getFormData(form);
         var data = formData.data;
         // If a honeypot field is filled, assume it was done so by a spam bot.
@@ -65,6 +65,7 @@
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
+                disableAllButtons(form, false, "Submit");
                 if (xhr.status === 200) {
                     form.reset();
                     var formElements = form.querySelectorAll(".form-group");
@@ -79,7 +80,6 @@
                     }
                 }
                 else {
-                    disableAllButtons(form, false);
                     if (thankYouMessage) {
                         thankYouMessage.classList.toggle("alert-success", false);
                         thankYouMessage.classList.toggle("alert-danger", true);
@@ -104,11 +104,14 @@
     }
     ;
     document.addEventListener("DOMContentLoaded", loaded, false);
-    function disableAllButtons(form, disabled) {
+    function disableAllButtons(form, disabled, text) {
         if (disabled === void 0) { disabled = true; }
         var buttons = form.querySelectorAll("button");
         for (var i = 0; i < buttons.length; i++) {
             buttons[i].disabled = disabled;
+            if (text) {
+                buttons[i].innerHTML = text;
+            }
         }
     }
 })();

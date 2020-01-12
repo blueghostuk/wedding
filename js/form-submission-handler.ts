@@ -54,10 +54,10 @@
     event.preventDefault();           // we are submitting via xhr below
     let form = event.target as HTMLFormElement;
     let thankYouMessage = form.querySelector<HTMLElement>(".alert");
-    if (thankYouMessage){
+    if (thankYouMessage) {
       thankYouMessage.style.display = "none";
     }
-    disableAllButtons(form);
+    disableAllButtons(form, true, "Submitting");
     let formData = getFormData(form);
     let data = formData.data;
 
@@ -73,6 +73,7 @@
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
+        disableAllButtons(form, false, "Submit");
         if (xhr.status === 200) {
           form.reset();
           let formElements = form.querySelectorAll<HTMLElement>(".form-group")
@@ -87,7 +88,6 @@
             thankYouMessage.style.display = "block";
           }
         } else {
-          disableAllButtons(form, false);
           if (thankYouMessage) {
             thankYouMessage.classList.toggle("alert-success", false);
             thankYouMessage.classList.toggle("alert-danger", true);
@@ -113,10 +113,13 @@
   };
   document.addEventListener("DOMContentLoaded", loaded, false);
 
-  function disableAllButtons(form: HTMLFormElement, disabled = true) {
+  function disableAllButtons(form: HTMLFormElement, disabled = true, text?: string) {
     let buttons = form.querySelectorAll<HTMLButtonElement>("button");
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].disabled = disabled;
+      if (text) {
+        buttons[i].innerHTML = text;
+      }
     }
   }
 })();

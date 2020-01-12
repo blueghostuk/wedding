@@ -93,4 +93,7 @@ table.table {
   width: unset;
   min-width: 400px; }
 
+button:disabled {
+  cursor: not-allowed; }
+
 /*# sourceMappingURL=style.css.map */
