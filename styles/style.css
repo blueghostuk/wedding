@@ -53,18 +53,19 @@ div.transport img {
 div.transport p {
   text-align: left; }
 
-@media (max-width: 990px) {
-  div.location {
-    flex-wrap: wrap; } }
-
-div.location p {
-  text-align: left; }
-
-div.location p.map {
-  margin-right: 1rem; }
+div.location {
+  align-items: center;
+  justify-content: center; }
   @media (max-width: 990px) {
-    div.location p.map {
-      order: 2; } }
+    div.location {
+      flex-wrap: wrap; } }
+  div.location p {
+    text-align: left; }
+  div.location p.map {
+    margin-right: 1rem; }
+    @media (max-width: 990px) {
+      div.location p.map {
+        order: 2; } }
 
 h1,
 p.lead {

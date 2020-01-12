@@ -75,6 +75,8 @@ div.transport {
 }
 
 div.location {
+  align-items: center;
+  justify-content: center;
   @media (max-width: 990px) {
     flex-wrap: wrap;
   }
