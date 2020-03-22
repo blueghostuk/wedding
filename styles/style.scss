@@ -57,6 +57,18 @@ nav {
       display: inline !important;
     }
   }
+  @media (max-width: 575px) {
+    .navbar-brand{
+      font-size: 0.9rem;
+    }
+  }
+}
+
+div.alert {
+  margin-top: 1rem;
+  @media (max-width: 575px) {
+    margin-top: 3rem;
+  }
 }
 
 div.transport {

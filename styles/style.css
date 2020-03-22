@@ -40,6 +40,16 @@ h1:not(:first-of-type) {
   nav span.date {
     display: inline !important; } }
 
+@media (max-width: 575px) {
+  nav .navbar-brand {
+    font-size: 0.9rem; } }
+
+div.alert {
+  margin-top: 1rem; }
+  @media (max-width: 575px) {
+    div.alert {
+      margin-top: 3rem; } }
+
 @media (max-width: 990px) {
   div.transport {
     flex-wrap: wrap; } }
