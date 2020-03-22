@@ -23,9 +23,9 @@
   },
   "homepage": "https://github.com/blueghostuk/wedding#readme",
   "devDependencies": {
-    "concurrently": "^5.0.1",
-    "node-sass": "^4.13.0",
-    "typescript": "^3.7.3"
+    "concurrently": "^5.1.0",
+    "node-sass": "^4.13.1",
+    "typescript": "^3.8.3"
   },
   "private": true
 }
