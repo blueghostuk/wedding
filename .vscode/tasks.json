@@ -11,6 +11,15 @@
             ],
             "group": "build",
             "isBackground": true
+        },
+        {
+            "type": "npm",
+            "script": "start",
+            "problemMatcher": [
+                "$tsc-watch"
+            ],
+            "group": "build",
+            "isBackground": true
         }
     ]
 }
