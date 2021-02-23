@@ -101,6 +101,24 @@
         for (var i = 0; i < forms.length; i++) {
             forms[i].addEventListener("submit", handleFormSubmit, false);
         }
+        // address is required if can attend
+        var address = document.getElementById("address");
+        var addressLabel = document.querySelector("label[for='address']");
+        var attendOptions = document.querySelectorAll("input[name='attend']");
+        attendOptions.forEach(function (attendInput) {
+            attendInput.addEventListener("change", function () {
+                var required = attendInput.value === "yes" && attendInput.checked;
+                address === null || address === void 0 ? void 0 : address.toggleAttribute("required", required);
+                if (addressLabel) {
+                    if (required) {
+                        addressLabel.innerText = "Address: *";
+                    }
+                    else {
+                        addressLabel.innerText = "Address:";
+                    }
+                }
+            });
+        });
     }
     ;
     document.addEventListener("DOMContentLoaded", loaded, false);
