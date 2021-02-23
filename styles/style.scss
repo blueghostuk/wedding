@@ -58,7 +58,7 @@ nav {
     }
   }
   @media (max-width: 575px) {
-    .navbar-brand{
+    .navbar-brand {
       font-size: 0.9rem;
     }
   }
@@ -67,7 +67,7 @@ nav {
 div.alert {
   margin-top: 1rem;
 
-  &.alert-danger{
+  &.alert-danger {
     background-color: #dbb3b731;
     text-align: center;
   }
@@ -105,6 +105,13 @@ div.location {
     @media (max-width: 990px) {
       order: 2;
     }
+  }
+}
+
+div.reception {
+  p.lead{
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
