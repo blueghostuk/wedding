@@ -80,6 +80,10 @@ div.location {
       div.location p.map {
         order: 2; } }
 
+div.reception p.lead {
+  margin-left: auto;
+  margin-right: auto; }
+
 h1,
 p.lead {
   text-align: center; }
