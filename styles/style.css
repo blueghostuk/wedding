@@ -24,7 +24,10 @@ body {
           margin-bottom: 0; } }
 
 .jumbotron {
-  background-color: rgba(233, 236, 239, 0.904); }
+  background-color: rgba(233, 236, 239, 0.904);
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: .3rem; }
 
 .bg-primary {
   background-color: #637cd8 !important; }
