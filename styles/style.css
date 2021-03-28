@@ -68,17 +68,25 @@ div.transport p {
 
 div.location {
   align-items: center;
-  justify-content: center; }
-  @media (max-width: 990px) {
-    div.location {
-      flex-wrap: wrap; } }
+  justify-content: center;
+  flex-wrap: wrap; }
   div.location p {
-    text-align: left; }
+    text-align: left;
+    flex-basis: 25%; }
+    @media (max-width: 990px) {
+      div.location p {
+        flex-basis: 100%; } }
   div.location p.map {
+    flex-basis: 50%;
     margin-right: 1rem; }
     @media (max-width: 990px) {
       div.location p.map {
         order: 2; } }
+  div.location p.live {
+    flex-basis: 100%; }
+    @media (max-width: 990px) {
+      div.location p.live {
+        order: 3; } }
 
 div.reception p.lead {
   margin-left: auto;
