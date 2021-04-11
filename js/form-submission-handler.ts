@@ -112,22 +112,22 @@
     }
 
     // address is required if can attend
-    const address = document.getElementById("address");
-    const addressLabel = document.querySelector<HTMLLabelElement>("label[for='address']");
-    const attendOptions = document.querySelectorAll<HTMLInputElement>("input[name='attend']");
-    attendOptions.forEach((attendInput) => {
-      attendInput.addEventListener("change", () => {
-        const required = attendInput.value === "yes" && attendInput.checked;
-        address?.toggleAttribute("required", required);
-        if (addressLabel) {
-          if (required) {
-            addressLabel.innerText = "Address: *";
-          } else {
-            addressLabel.innerText = "Address:";
-          }
-        }
-      });
-    })
+    // const address = document.getElementById("address");
+    // const addressLabel = document.querySelector<HTMLLabelElement>("label[for='address']");
+    // const attendOptions = document.querySelectorAll<HTMLInputElement>("input[name='attend']");
+    // attendOptions.forEach((attendInput) => {
+    //   attendInput.addEventListener("change", () => {
+    //     const required = attendInput.value === "yes" && attendInput.checked;
+    //     address?.toggleAttribute("required", required);
+    //     if (addressLabel) {
+    //       if (required) {
+    //         addressLabel.innerText = "Address: *";
+    //       } else {
+    //         addressLabel.innerText = "Address:";
+    //       }
+    //     }
+    //   });
+    // })
   };
   document.addEventListener("DOMContentLoaded", loaded, false);
 

@@ -1,6 +1,5 @@
 "use strict";
 (function () {
-    // get all data in form and return object
     function getFormData(form) {
         var elements = form.elements;
         var honeypot;
@@ -13,7 +12,6 @@
         }).map(function (k) {
             if (elements[k].name !== undefined) {
                 return elements[k].name;
-                // special case for Edge's html collection
             }
             else if (elements[k].length > 0) {
                 return elements[k].item(0).name;
@@ -24,9 +22,7 @@
         var formData = {};
         fields.forEach(function (name) {
             var element = elements[name];
-            // singular form elements just have one value
             formData[name] = element.value;
-            // when our element has multiple items, get their values
             if (element.length) {
                 var data = [];
                 for (var i = 0; i < element.length; i++) {
@@ -38,14 +34,13 @@
                 formData[name] = data.join(', ');
             }
         });
-        // add form-specific values into the data
         formData.formDataNameOrder = JSON.stringify(fields);
-        formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
-        formData.formGoogleSend = form.dataset.email || ""; // no email by default
+        formData.formGoogleSheetName = form.dataset.sheet || "responses";
+        formData.formGoogleSend = form.dataset.email || "";
         return { data: formData, honeypot: honeypot };
     }
     function handleFormSubmit(event) {
-        event.preventDefault(); // we are submitting via xhr below
+        event.preventDefault();
         var form = event.target;
         var thankYouMessage = form.querySelector(".alert");
         if (thankYouMessage) {
@@ -54,14 +49,12 @@
         disableAllButtons(form, true, "Submitting");
         var formData = getFormData(form);
         var data = formData.data;
-        // If a honeypot field is filled, assume it was done so by a spam bot.
         if (formData.honeypot) {
             return false;
         }
         var url = form.action;
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);
-        // xhr.withCredentials = true;
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
@@ -70,7 +63,7 @@
                     form.reset();
                     var formElements = form.querySelectorAll(".form-group");
                     if (formElements && formElements.length > 0) {
-                        formElements.forEach(function (e) { return e.style.display = "none"; }); // hide form controls
+                        formElements.forEach(function (e) { return e.style.display = "none"; });
                     }
                     if (thankYouMessage) {
                         thankYouMessage.classList.toggle("alert-success", true);
@@ -89,36 +82,16 @@
                 }
             }
         };
-        // url encode form data for sending as post data
         var encoded = Object.keys(data).map(function (k) {
             return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
         }).join('&');
         xhr.send(encoded);
     }
     function loaded() {
-        // bind to the submit event of our form
         var forms = document.querySelectorAll("form.gform");
         for (var i = 0; i < forms.length; i++) {
             forms[i].addEventListener("submit", handleFormSubmit, false);
         }
-        // address is required if can attend
-        var address = document.getElementById("address");
-        var addressLabel = document.querySelector("label[for='address']");
-        var attendOptions = document.querySelectorAll("input[name='attend']");
-        attendOptions.forEach(function (attendInput) {
-            attendInput.addEventListener("change", function () {
-                var required = attendInput.value === "yes" && attendInput.checked;
-                address === null || address === void 0 ? void 0 : address.toggleAttribute("required", required);
-                if (addressLabel) {
-                    if (required) {
-                        addressLabel.innerText = "Address: *";
-                    }
-                    else {
-                        addressLabel.innerText = "Address:";
-                    }
-                }
-            });
-        });
     }
     ;
     document.addEventListener("DOMContentLoaded", loaded, false);

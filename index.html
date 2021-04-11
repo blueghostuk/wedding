@@ -67,9 +67,11 @@
                     <br>
                     We have let those 15 people know individually who they are.
                     <br>
-                    For everyone else you can watch the ceremony the <a href="#wedding">facebook live video below</a>, and we will be having a <a href="#reception">virtual reception</a> in the evening, via Zoom and YouTube.
+                    For everyone else you can watch the ceremony the <a href="#wedding">facebook live video below</a>,
+                    and we will be having a <a href="#reception">virtual reception</a> in the evening, via Zoom and
+                    YouTube.
                     <br>
-                    Please complete an RSVP below so we can email you the details.
+                    Please complete an <a href="#rsvp">RSVP</a> below so we can email you the details.
                     <br>
                     Take Care, Raichelle & Michael.
                 </p>
@@ -103,7 +105,7 @@
                     </tr>
                     <tr>
                         <th>14:30</th>
-                        <td>Ceremony</td>
+                        <td>Ceremony (<a href="downloads/order-of-service.pdf" target="_blank">order of service download</a>)</td>
                     </tr>
                     <tr>
                         <th>15:30</th>
@@ -177,8 +179,12 @@
                     weather).
                 </p>
                 <p class="lead live">
+                    <a href="downloads/order-of-service.pdf" target="_blank">You can download the order of service by clicking here (1.2MB PDF)</a>.
+                </p>
+                <p class="lead live">
                     The Wedding Ceremony will be live streamed via Facebook (you will not need an account to watch).<br>
-                    The event listing is <a href="https://fb.me/e/51TBWx4xw" target="_blank">https://fb.me/e/51TBWx4xw</a><br>
+                    The event listing is <a href="https://fb.me/e/51TBWx4xw"
+                        target="_blank">https://fb.me/e/51TBWx4xw</a><br>
                     The video will start below on the day (will show as unavailable until then):
                     <iframe
                         src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fmichael.pritchard.uk%2Fvideos%2F10157506025925916%2F&width=640"
@@ -200,46 +206,30 @@
             </div>
             <h1 class="display-4" id="gift-list">Gift List</h1>
             <p class="lead">
-                First, thank you to those who got us a John Lewis card for our original date, we are most grateful.<br>
+                First, thank you to those who got us a gift for our original date, we are most grateful.<br>
                 We would be happy just with your company and best wishes, however if you wish to get us something a gift
                 card for John Lewis would be appreciated.<br />
             </p>
             <h1 class="display-4" id="rsvp">RSVP</h1>
             <p class="lead">
-                Please RSVP by <strong>Saturday 3rd April 2021</strong> using the form below (alternatively contact us
-                using our details on the invite).<br>
+                Please RSVP by using the form below and we will send you a Zoom link nearer the date.
             </p>
             <form class="gform" method="POST"
                 action="https://script.google.com/macros/s/AKfycbxnaeU76GdbIgCx86c0aMfj5AoWGPvad-gTlbqGoI3xpH5HsX4Wl-duyQ/exec">
                 <div class="form-group">
                     <label for="name">Name(s) *:</label>
-                    <input type="text" class="form-control" id="name" name="name" required
-                        placeholder="Please specify if plus one.">
+                    <input type="text" class="form-control" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <label for="email">Email address *:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="mobile">Contact Number:</label>
                     <input type="tel" class="form-control" id="mobile" name="phone">
                 </div>
-                <div class="form-group">
-                    <label for="attend">Virtual Reception Attendence *:</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="attend" id="yes" value="yes" required>
-                        <label class="form-check-label" for="yes">Yes I/We can attend</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="attend" id="no" value="no">
-                        <label class="form-check-label" for="no">Unfortunately I/We can't attend</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <textarea class="form-control" id="address" name="address"
-                        placeholder="Please fill this in if you can attend the virtual reception. If it will be the same as your invite address please just enter 'Same as invite'. Thanks!"></textarea>
-                </div>
+                <input type="hidden" name="attend" value="yes">
+                <input type="hidden" name="address" value="N/A">
                 <div class="form-group">
                     <label for="other">Other notes:</label>
                     <textarea class="form-control" id="other" name="other"
