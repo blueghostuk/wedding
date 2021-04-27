@@ -59,6 +59,15 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 disableAllButtons(form, false, "Submit");
+                var target = void 0;
+                switch (form.getAttribute("id")) {
+                    case "guestbook":
+                        target = "message";
+                        break;
+                    default:
+                        target = "RSVP";
+                        break;
+                }
                 if (xhr.status === 200) {
                     form.reset();
                     var formElements = form.querySelectorAll(".form-group");
@@ -68,7 +77,7 @@
                     if (thankYouMessage) {
                         thankYouMessage.classList.toggle("alert-success", true);
                         thankYouMessage.classList.toggle("alert-danger", false);
-                        thankYouMessage.innerHTML = "<h2>Thanks for your RSVP.</h2>";
+                        thankYouMessage.innerHTML = "<h2>Thanks for your " + target + ".</h2>";
                         thankYouMessage.style.display = "block";
                     }
                 }
@@ -76,7 +85,7 @@
                     if (thankYouMessage) {
                         thankYouMessage.classList.toggle("alert-success", false);
                         thankYouMessage.classList.toggle("alert-danger", true);
-                        thankYouMessage.innerHTML = "<h2>Sorry there was a problem sending your RSVP, please try again.</h2>";
+                        thankYouMessage.innerHTML = "<h2>Sorry there was a problem sending your " + target + ", please try again.</h2>";
                         thankYouMessage.style.display = "block";
                     }
                 }

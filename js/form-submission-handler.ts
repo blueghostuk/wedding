@@ -74,9 +74,19 @@
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4) {
         disableAllButtons(form, false, "Submit");
+
+        let target: string;
+        switch (form.getAttribute("id")) {
+          case "guestbook":
+            target = "message";
+            break;
+          default:
+            target = "RSVP";
+            break;
+        }
         if (xhr.status === 200) {
           form.reset();
-          let formElements = form.querySelectorAll<HTMLElement>(".form-group")
+          let formElements = form.querySelectorAll<HTMLElement>(".form-group");
           if (formElements && formElements.length > 0) {
             formElements.forEach((e) => e.style.display = "none");// hide form controls
           }
@@ -84,14 +94,14 @@
           if (thankYouMessage) {
             thankYouMessage.classList.toggle("alert-success", true);
             thankYouMessage.classList.toggle("alert-danger", false);
-            thankYouMessage.innerHTML = "<h2>Thanks for your RSVP.</h2>";
+            thankYouMessage.innerHTML = `<h2>Thanks for your ${target}.</h2>`;
             thankYouMessage.style.display = "block";
           }
         } else {
           if (thankYouMessage) {
             thankYouMessage.classList.toggle("alert-success", false);
             thankYouMessage.classList.toggle("alert-danger", true);
-            thankYouMessage.innerHTML = "<h2>Sorry there was a problem sending your RSVP, please try again.</h2>"
+            thankYouMessage.innerHTML = `<h2>Sorry there was a problem sending your ${target}, please try again.</h2>`;
             thankYouMessage.style.display = "block";
           }
         }
