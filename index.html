@@ -50,6 +50,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#rsvp">RSVP</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#guestbook">Guestbook</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -215,7 +218,7 @@
                 Please RSVP by using the form below and we will send you a Zoom link nearer the date.
             </p>
             <form class="gform" method="POST"
-                action="https://script.google.com/macros/s/AKfycbxnaeU76GdbIgCx86c0aMfj5AoWGPvad-gTlbqGoI3xpH5HsX4Wl-duyQ/exec">
+                action="https://script.google.com/macros/s/AKfycbxnaeU76GdbIgCx86c0aMfj5AoWGPvad-gTlbqGoI3xpH5HsX4Wl-duyQ/exec" id="rsvp">
                 <div class="form-group">
                     <label for="name">Name(s) *:</label>
                     <input type="text" class="form-control" id="name" name="name" required>
@@ -237,7 +240,27 @@
                 </div>
                 <button type="submit" class="btn btn-primary form-group">Submit</button>
                 <div style="display:none" class="alert alert-success" role="alert">
-
+                </div>
+            </form>
+            <h1 class="display-4" id="guestbook">Guestbook</h1>
+            <p class="lead">
+                Please enter your message using the form below:
+            </p>
+            <form class="gform" method="POST"
+                action="https://script.google.com/macros/s/AKfycbxnaeU76GdbIgCx86c0aMfj5AoWGPvad-gTlbqGoI3xpH5HsX4Wl-duyQ/exec" id="guestbook">
+                <div class="form-group">
+                    <label for="name">Name(s) *:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <input type="hidden" name="guestbook" value="yes">
+                <input type="hidden" name="address" value="N/A">
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea class="form-control guestbook" id="message" name="message"
+                        placeholder="Enter anything else you want to tell us here."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary form-group">Submit</button>
+                <div style="display:none" class="alert alert-success" role="alert">
                 </div>
             </form>
         </div>
